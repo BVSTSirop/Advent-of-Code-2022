@@ -1,4 +1,4 @@
-package ch.killenberger;
+package ch.killenberger.utils;
 
 import java.util.*;
 
