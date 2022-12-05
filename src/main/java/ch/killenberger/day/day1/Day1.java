@@ -1,4 +1,7 @@
-package ch.killenberger.day;
+package ch.killenberger.day.day1;
+
+import ch.killenberger.day.AbstractDay;
+import ch.killenberger.day.Day;
 
 import java.io.IOException;
 import java.util.*;
