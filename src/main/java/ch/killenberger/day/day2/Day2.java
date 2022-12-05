@@ -25,29 +25,29 @@ public class Day2 extends AbstractDay implements Day<Integer> {
     }
 
     private int parseInput(final List<String> lines, final boolean partOne) {
-        char opponentChar;
-        char selfChar;
-        int  result = 0;
-        for(String s : lines) {
-            final char[] splits = s.toCharArray();
+        HandType opponentType;
+        HandType selfType;
 
-            opponentChar = splits[0];
+        int result = 0;
+        for(String s : lines) {
+            char firstColumn  = s.charAt(0);
+            char secondColumn = s.charAt(2);
+
+            opponentType = HandType.findByLetter(firstColumn);
+
             if(partOne) {
-                selfChar = splits[2];
+                selfType = HandType.findByLetter(secondColumn);
             } else {
-                selfChar     = getSelfEnum(opponentChar, splits[2]).selfLetter;
+                selfType = getSelfEnum(opponentType, secondColumn);
             }
 
-            result += calculateMatchup(opponentChar, selfChar);
+            result += calculateMatchup(opponentType, selfType);
         }
 
         return result;
     }
 
-    private int calculateMatchup(char opponentChar, char selfChar) {
-        final HandType opponentType = HandType.findByLetter(opponentChar);
-        final HandType selfType     = HandType.findByLetter(selfChar);
-
+    private int calculateMatchup(HandType opponentType, HandType selfType) {
         if(opponentType == selfType) {
             return REWARD_TIE + opponentType.value;
         }
@@ -72,12 +72,10 @@ public class Day2 extends AbstractDay implements Day<Integer> {
             }
         }
 
-        throw new IllegalArgumentException("No matchup could be found for: " + opponentChar + " | " + selfChar);
+        throw new IllegalArgumentException("No matchup could be found for: " + opponentType.name() + " | " + selfType.name());
     }
 
-    private HandType getSelfEnum(char opponentChar, char mode) {
-        HandType opponentType = HandType.findByLetter(opponentChar);
-
+    private HandType getSelfEnum(HandType opponentType, char mode) {
         if(mode == 'X') {
             if(opponentType == HandType.ROCK) {
                 return HandType.SCISSOR;
@@ -110,6 +108,6 @@ public class Day2 extends AbstractDay implements Day<Integer> {
             }
         }
 
-        throw new IllegalArgumentException("No matchup could be found for: " + opponentChar + " | " + mode);
+        throw new IllegalArgumentException("No matchup could be found for: " + opponentType.name() + " | " + mode);
     }
 }
