@@ -1,4 +1,4 @@
-package ch.killenberger.abstracts;
+package ch.killenberger.day;
 
 import ch.killenberger.utils.FileUtil;
 
@@ -15,7 +15,7 @@ public class AbstractDay {
     private static final String INPUT_DIR_NAME       = "input";
 
     private static final String WORKING_DIR          = System.getProperty("user.dir");
-    private static final String RESOURCES_DIR        = WORKING_DIR + File.separator + RESOURCES_DIR_NAME;
+    private static final String RESOURCES_DIR        = "src/main/resources";
     private static final String INPUT_DIR            = RESOURCES_DIR + File.separator + INPUT_DIR_NAME;
 
     protected File inputFile;
