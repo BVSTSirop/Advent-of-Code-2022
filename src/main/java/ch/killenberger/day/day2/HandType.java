@@ -4,21 +4,17 @@ import java.util.Arrays;
 
 public enum HandType {
 
-    ROCK('A', 'X', 1, HandType.SCISSOR, HandType.PAPER),
-    PAPER('B', 'Y', 2, HandType.ROCK. HandType.SCISSOR),
-    SCISSOR('C', 'Z', 3, HandType.PAPER, HandType.ROCK);
+    ROCK('A', 'X', 1),
+    PAPER('B', 'Y',2),
+    SCISSOR('C', 'Z', 3);
 
     char opponentLetter;
     char selfLetter;
     int value;
-    HandType winningAgainst;
-    HandType losingAgainst;
-    private HandType(final char opponentLetter, char selfLetter, final int value, final HandType winningAgainst, final HandType losingAgainst) {
+    private HandType(final char opponentLetter, char selfLetter, final int value) {
         this.opponentLetter = opponentLetter;
         this.selfLetter     = selfLetter;
         this.value          = value;
-        this.winningAgainst = winningAgainst;
-        this.losingAgainst  = losingAgainst;
     }
 
     public static HandType findByLetter(char letter) {
