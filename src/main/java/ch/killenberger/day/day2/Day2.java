@@ -47,36 +47,33 @@ public class Day2 extends AbstractDay implements Day<Integer> {
         return result;
     }
 
+    // Calculates the score of a rock, paper, scissor matchup
     private int calculateMatchup(HandType opponentType, HandType selfType) {
+        int result = 0;
+        
         if(opponentType == selfType) {
-            return REWARD_TIE + opponentType.value;
-        }
-
-        if(opponentType == HandType.ROCK) {
+            result = REWARD_TIE;
+        } else if(opponentType == HandType.ROCK) {
             if(selfType == HandType.PAPER) {
-                return REWARD_WIN + HandType.PAPER.value;
+                result = REWARD_WIN;
             } else if(selfType == HandType.SCISSOR) {
-                return REWARD_LOSS + HandType.SCISSOR.value;
+                result = REWARD_LOSS;
             }
-        }
-        
-        if(opponentType == HandType.PAPER) {
+        } else if(opponentType == HandType.PAPER) {
             if(selfType == HandType.SCISSOR) {
-                return REWARD_WIN + HandType.SCISSOR.value;
+                result = REWARD_WIN;
             } else if (selfType == HandType.ROCK) {
-                return REWARD_LOSS + HandType.ROCK.value;
+                result = REWARD_LOSS;
             }
-        }
-        
-        if(opponentType == HandType.SCISSOR) {
+        } else if(opponentType == HandType.SCISSOR) {
             if(selfType == HandType.ROCK) {
-                return REWARD_WIN + HandType.ROCK.value;
+                result = REWARD_WIN;
             } else if(selfType == HandType.PAPER) {
-                return REWARD_LOSS + HandType.PAPER.value;
+                result = REWARD_LOSS;
             }
         }
 
-        throw new IllegalArgumentException("No matchup could be found for: " + opponentType.name() + " | " + selfType.name());
+        return result + selfType.value;
     }
 
     private HandType getSelfEnum(HandType opponentType, char mode) {
