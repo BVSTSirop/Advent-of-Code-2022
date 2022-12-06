@@ -32,7 +32,7 @@ public class Day1 extends AbstractDay implements Day<Integer> {
         return sortedTotalCalories.get(0) + sortedTotalCalories.get(1) + sortedTotalCalories.get(2);
     }
 
-    public Map<Integer, Integer> convertInput(final List<String> input) {
+    private Map<Integer, Integer> convertInput(final List<String> input) {
         final Map<Integer, Integer> result = new TreeMap<>();
 
         int counter  = 1;
