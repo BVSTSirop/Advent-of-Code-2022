@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public enum HandType {
 
-    ROCK   ('A', 'X', 1, HandType.SCISSOR, HandType.PAPER),
-    PAPER  ('B', 'Y', 2, HandType.ROCK,    HandType.SCISSOR),
-    SCISSOR('C', 'Z', 3, HandType.PAPER,   HandType.ROCK);
+    ROCK('A', 'X', 1, HandType.SCISSOR, HandType.PAPER),
+    PAPER('B', 'Y', 2, HandType.ROCK, HandType.SCISSOR),
+    SCISSOR('C', 'Z', 3, HandType.PAPER, HandType.ROCK);
 
     char opponentLetter;
     char selfLetter;
