@@ -49,46 +49,20 @@ public class Day2 extends AbstractDay implements Day<Integer> {
 
     // Calculates the score of a rock, paper, scissor matchup
     private int calculateMatchup(HandType opponentType, HandType selfType) {
-        int result = 0;
-        
-        if(opponentType == selfType) {
-            result = REWARD_TIE;
-        } else if(opponentType == HandType.ROCK) {
-            if(selfType == HandType.PAPER) {
-                result = REWARD_WIN;
-            } else if(selfType == HandType.SCISSOR) {
-                result = REWARD_LOSS;
-            }
-        } else if(opponentType == HandType.PAPER) {
-            if(selfType == HandType.SCISSOR) {
-                result = REWARD_WIN;
-            } else if (selfType == HandType.ROCK) {
-                result = REWARD_LOSS;
-            }
-        } else if(opponentType == HandType.SCISSOR) {
-            if(selfType == HandType.ROCK) {
-                result = REWARD_WIN;
-            } else if(selfType == HandType.PAPER) {
-                result = REWARD_LOSS;
-            }
+        if(selfType == opponentType) {
+            return REWARD_TIE + selfType.value;
         }
 
-        return result + selfType.value;
+        if(selfType == opponentType.getLosingMatchup()) {
+            return REWARD_WIN + selfType.value;
+        }
+
+        return REWARD_LOSS + selfType.value;
     }
 
     private HandType getSelfEnum(HandType opponentType, char mode) {
         if(mode == 'X') {
-            if(opponentType == HandType.ROCK) {
-                return HandType.SCISSOR;
-            }
-
-            if(opponentType == HandType.PAPER) {
-                return HandType.ROCK;
-            }
-
-            if(opponentType == HandType.SCISSOR) {
-                return HandType.PAPER;
-            }
+            return opponentType.getWinningMatchup();
         }
 
         if(mode == 'Y') {
@@ -96,17 +70,7 @@ public class Day2 extends AbstractDay implements Day<Integer> {
         }
 
         if(mode == 'Z') {
-            if(opponentType == HandType.ROCK) {
-                return HandType.PAPER;
-            }
-
-            if(opponentType == HandType.PAPER) {
-                return HandType.SCISSOR;
-            }
-
-            if(opponentType == HandType.SCISSOR) {
-                return HandType.ROCK;
-            }
+            return opponentType.getLosingMatchup();
         }
 
         throw new IllegalArgumentException("No matchup could be found for: " + opponentType.name() + " | " + mode);

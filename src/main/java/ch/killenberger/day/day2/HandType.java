@@ -26,4 +26,36 @@ public enum HandType {
 
         throw new IllegalArgumentException("No ENUM could be found relating to the letter: " + letter);
     }
+
+    public HandType getWinningMatchup() {
+        if(this == HandType.ROCK) {
+            return HandType.SCISSOR;
+        }
+
+        if(this == HandType.PAPER) {
+            return HandType.ROCK;
+        }
+
+        if(this == HandType.SCISSOR) {
+            return HandType.PAPER;
+        }
+
+        throw new IllegalArgumentException("No winning matchup was found for " + this);
+    }
+
+    public HandType getLosingMatchup() {
+        if(this == HandType.ROCK) {
+            return HandType.PAPER;
+        }
+
+        if(this == HandType.PAPER) {
+            return HandType.SCISSOR;
+        }
+
+        if(this == HandType.SCISSOR) {
+            return HandType.ROCK;
+        }
+
+        throw new IllegalArgumentException("No losing matchup was found for " + this);
+    }
 }
