@@ -53,24 +53,14 @@ public class Day2 extends AbstractDay implements Day<Integer> {
         
         if(opponentType == selfType) {
             result = REWARD_TIE;
-        } else if(opponentType == HandType.ROCK) {
-            if(selfType == HandType.PAPER) {
-                result = REWARD_WIN;
-            } else if(selfType == HandType.SCISSOR) {
-                result = REWARD_LOSS;
-            }
-        } else if(opponentType == HandType.PAPER) {
-            if(selfType == HandType.SCISSOR) {
-                result = REWARD_WIN;
-            } else if (selfType == HandType.ROCK) {
-                result = REWARD_LOSS;
-            }
-        } else if(opponentType == HandType.SCISSOR) {
-            if(selfType == HandType.ROCK) {
-                result = REWARD_WIN;
-            } else if(selfType == HandType.PAPER) {
-                result = REWARD_LOSS;
-            }
+        } else if((opponentType == HandType.ROCK    && selfType == opponentType.losingAgainst) || 
+                  (opponentType == HandType.PAPER   && selfType == opponentType.losingAgainst) || 
+                  (opponentType == HandType.SCISSOR && selfType == opponentType.losingAgainst)) {
+            result = REWARD_WIN;
+        } else if((opponentType == HandType.ROCK    && selfType == opponentType.winningAgainst) || 
+                  (opponentType == HandType.PAPER   && selfType == opponentType.winningAgainst) || 
+                  (opponentType == HandType.SCISSOR && selfType == opponentType.winningAgainst)) {
+            result = REWARD_LOSS;
         }
 
         return result + selfType.value;
