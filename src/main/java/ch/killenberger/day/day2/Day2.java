@@ -58,13 +58,17 @@ public class Day2 extends AbstractDay implements Day<Integer> {
             } else if(selfType == HandType.SCISSOR) {
                 return REWARD_LOSS + HandType.SCISSOR.value;
             }
-        } else if(opponentType == HandType.PAPER) {
+        }
+        
+        if(opponentType == HandType.PAPER) {
             if(selfType == HandType.SCISSOR) {
                 return REWARD_WIN + HandType.SCISSOR.value;
             } else if (selfType == HandType.ROCK) {
                 return REWARD_LOSS + HandType.ROCK.value;
             }
-        } else if(opponentType == HandType.SCISSOR) {
+        }
+        
+        if(opponentType == HandType.SCISSOR) {
             if(selfType == HandType.ROCK) {
                 return REWARD_WIN + HandType.ROCK.value;
             } else if(selfType == HandType.PAPER) {
