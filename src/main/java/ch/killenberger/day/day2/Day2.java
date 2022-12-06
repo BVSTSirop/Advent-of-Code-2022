@@ -25,14 +25,15 @@ public class Day2 extends AbstractDay implements Day<Integer> {
     }
 
     private int parseInput(final List<String> lines, final boolean partOne) {
+        char     firstColumn;
+        char     secondColumn;
         HandType opponentType;
         HandType selfType;
 
         int result = 0;
         for(String s : lines) {
-            char firstColumn  = s.charAt(0);
-            char secondColumn = s.charAt(2);
-
+            firstColumn  = s.charAt(0);
+            secondColumn = s.charAt(2);
             opponentType = HandType.findByLetter(firstColumn);
 
             if(partOne) {
