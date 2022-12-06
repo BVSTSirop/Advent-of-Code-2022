@@ -78,7 +78,17 @@ public class Day2 extends AbstractDay implements Day<Integer> {
 
     private HandType getSelfEnum(HandType opponentType, char mode) {
         if(mode == 'X') {
-            return opponentType.winningAgainst;
+            if(opponentType == HandType.ROCK) {
+                return HandType.SCISSOR;
+            }
+
+            if(opponentType == HandType.PAPER) {
+                return HandType.ROCK;
+            }
+
+            if(opponentType == HandType.SCISSOR) {
+                return HandType.PAPER;
+            }
         }
 
         if(mode == 'Y') {
@@ -86,7 +96,17 @@ public class Day2 extends AbstractDay implements Day<Integer> {
         }
 
         if(mode == 'Z') {
-            return opponentType.losingAgainst;
+            if(opponentType == HandType.ROCK) {
+                return HandType.PAPER;
+            }
+
+            if(opponentType == HandType.PAPER) {
+                return HandType.SCISSOR;
+            }
+
+            if(opponentType == HandType.SCISSOR) {
+                return HandType.ROCK;
+            }
         }
 
         throw new IllegalArgumentException("No matchup could be found for: " + opponentType.name() + " | " + mode);
