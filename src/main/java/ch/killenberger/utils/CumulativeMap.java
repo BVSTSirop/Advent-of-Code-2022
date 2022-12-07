@@ -21,6 +21,12 @@ public class CumulativeMap<K> {
         this.put(key, 1);
     }
 
+    public void putAll(Collection<K> keys) {
+        for(K key : keys) {
+            put(key);
+        }
+    }
+
     public Integer get(K key) {
         Map.Entry<K, Integer> e = findEntryByKey(key);
 
