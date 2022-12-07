@@ -8,11 +8,10 @@ import java.io.IOException;
 import java.util.stream.IntStream;
 
 public class Main {
-
     private static Day1 dOne = new Day1("1");
     private static Day2 dTwo = new Day2("2");
     private static Day3 dThree = new Day3("3");
-    
+
     public static void main(String... args) throws IOException {
         System.out.println("\n------------- Day 1 -------------");
         System.out.println("Result day one: "          + dOne.run(true));
