@@ -92,6 +92,6 @@ public class Day3 extends AbstractDay implements Day<Integer> {
     }
 
     private int  getPriority(final Character c) {
-        return alphabet.indexOf(c) + 1;
+        return this.alphabet.indexOf(c) + 1;
     }
 }
