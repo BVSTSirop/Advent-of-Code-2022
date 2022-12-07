@@ -42,7 +42,7 @@ public class Day3 extends AbstractDay implements Day<Integer> {
         for(String s : lines) {
             halves = splitStringInHalf(s);
 
-            // Reducing both halves so that there are not duplicate in either of them
+            // Reducing both halves so that there are no duplicate chars in either of them
             HashSet<Character> reducedFirstHalf  = reduceDuplicateCharacters(halves[0]);
             HashSet<Character> reducedSecondHalf = reduceDuplicateCharacters(halves[1]);
 
