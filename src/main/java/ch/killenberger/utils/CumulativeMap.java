@@ -21,7 +21,7 @@ public class CumulativeMap<K> {
         this.put(key, 1);
     }
 
-    public void putAll(Collection<K>... keys) {
+    public void putAll(Collection<K> keys) {
         for(K key : keys) {
             put(key);
         }
