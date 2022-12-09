@@ -3,7 +3,7 @@ package ch.killenberger.utils;
 import java.util.*;
 
 public class CumulativeMap<K> {
-    List<Map.Entry<K, Integer>> entries = new ArrayList<>();
+    final List<Map.Entry<K, Integer>> entries = new ArrayList<>();
 
     public void put(K key, Integer value) {
         Map.Entry<K, Integer> existingEntry = findEntryByKey(key);
@@ -21,9 +21,12 @@ public class CumulativeMap<K> {
         this.put(key, 1);
     }
 
-    public void putAll(Collection<K> keys) {
-        for(K key : keys) {
-            put(key);
+    @SafeVarargs
+    public final void putAll(Collection<K>... keyCollections) {
+        for(Collection<K> collection : keyCollections) {
+            for(K key : collection) {
+                put(key);
+            }
         }
     }
 
@@ -42,11 +45,11 @@ public class CumulativeMap<K> {
     }
 
     public Map.Entry<K, Integer> getHighestValueEntry() {
-        return Collections.max(this.entries, (Entry<K, Integer> e1, Entry<K, Integer> e2) -> e1.getValue().compareTo(e2.getValue()));
+        return Collections.max(this.entries, Map.Entry.comparingByValue());
     }
 
     public Map.Entry<K, Integer> getLowestValueEntry() {
-        return Collections.min(this.entries, (Entry<K, Integer> e1, Entry<K, Integer> e2) -> e1.getValue().compareTo(e2.getValue()));
+        return Collections.min(this.entries, Map.Entry.comparingByValue());
     }
 
     public Map<K, Integer> toMap() {

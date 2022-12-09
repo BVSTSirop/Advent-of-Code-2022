@@ -47,8 +47,7 @@ public class Day3 extends AbstractDay implements Day<Integer> {
             HashSet<Character> reducedSecondHalf = reduceDuplicateCharacters(halves[1]);
 
             // Combining the entries will result in only one duplicate character
-            characters.putAll(reducedFirstHalf);
-            characters.putAll(reducedSecondHalf);
+            characters.putAll(reducedFirstHalf, reducedSecondHalf);
 
             // Gets the character whith the highest occurrence (which is 2) and adds its priority to the result
             result +=  getPriority(characters.getHighestValueEntry().getKey());
