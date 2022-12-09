@@ -25,7 +25,7 @@ public class Day4 extends AbstractDay implements Day<Integer> {
     private int processInput(final List<String> lines, final boolean partOne) {
         int result = 0;
         for(String s : lines) {
-            // Splitting the input string, so we end up having an array of start and end indexes for the left and right side of the pair
+            // Splitting the input string, so we end up having an array of start and end indexes for either side of the pair
             final int[]         leftSection     = Arrays.stream(s.split(",")[0].split("-")).mapToInt(Integer::parseInt).toArray();
             final int[]         rightSection    = Arrays.stream(s.split(",")[1].split("-")).mapToInt(Integer::parseInt).toArray();
 
